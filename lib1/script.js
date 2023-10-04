@@ -21,19 +21,19 @@ var countdownfunction = setInterval(function() {
   + minutes + "m " + seconds + "s ";
   document.getElementById("tabName").innerHTML = hours + "h "
   + minutes + "m " + seconds + "s ";
-  document.getElementById("icon").innerHTML = "<link rel='icon' href='https://i.ibb.co/y44mD31/circle-FILL1-wght400-GRAD0-opsz24.png'>"
-  // If the count down is over, write some text 
-  var link = document.querySelector("link[rel~='icon']");
-if (!link) {
-    link = document.createElement('link');
-    link.rel = 'icon';
-    document.head.appendChild(link);
-}
-link.href = 'https://stackoverflow.com/favicon.ico';
 
+  // If the count down is over, write some text 
   if (distance < 0) {
     clearInterval(countdownfunction);
-    document.getElementById("demo").innerHTML = "Error :(";
+    document.getElementById("demo").innerHTML = "School is over";
+    document.getElementById("tabName").innerHTML = "School Clock";
+    var link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    link.href = "images/clock.svg";
   }
 }, 1000);
 function randomize(){
@@ -46,3 +46,4 @@ function randomize(){
     document.getElementById("bgimgid").style = "background-image: url('https://d2csxpduxe849s.cloudfront.net/media/E32629C6-9347-4F84-81FEAEF7BFA342B3/24220D05-C580-4CEE-BF600801B906E712/97C2F5A1-B4E6-4543-8F35006A0AAFD991/WebsiteJpg_XL-FFGC_Main%20Visual_Green_Website.jpg');height: 100%; background-position: center; background-size: cover;position: relative;color: white; font-family: 'Dela Gothic One', sans-serif; font-size: 25px; text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;"
   }}}
 }
+//Favicon Stuff
