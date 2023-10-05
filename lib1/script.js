@@ -1,32 +1,24 @@
 const realtime = new Date();
 var countDownDate = new Date((realtime.getMonth() + 1)+" "+realtime.getDate()+", "+realtime.getFullYear()+ " 15:30:00").getTime();
-
+var now = new Date().getTime();
+var distance = countDownDate - now;
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+var whatisit;
 // Update the count down every 1 second
 var countdownfunction = setInterval(function() {
-
-  // Get todays date and time
+  
+  // Output the result in an element with id="demo"
   var now = new Date().getTime();
-  
-  // Find the distance between now an the count down date
   var distance = countDownDate - now;
-  
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = hours + "h "
-  + minutes + "m " + seconds + "s ";
-  document.getElementById("tabName").innerHTML = hours + "h "
-  + minutes + "m " + seconds + "s ";
-
   // If the count down is over, write some text 
   if (distance < 0) {
-    clearInterval(countdownfunction);
-    document.getElementById("demo").innerHTML = "School is over";
-    document.getElementById("tabName").innerHTML = "School Clock";
+    document.getElementById("maintext").innerHTML = "School is over";
+    document.getElementById("demo").innerHTML = "Wait till tomorrow";
     var link = document.querySelector("link[rel~='icon']");
     if (!link) {
       link = document.createElement('link');
@@ -34,6 +26,30 @@ var countdownfunction = setInterval(function() {
       document.getElementsByTagName('head')[0].appendChild(link);
     }
     link.href = "images/clock.svg";
+  }else if(distance > 6){
+    countDownDate = new Date((realtime.getMonth() + 1)+" "+realtime.getDate()+", "+realtime.getFullYear()+ " 8:30:00").getTime();
+    var now = new Date().getTime();
+  var distance = countDownDate - now;
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("maintext").innerHTML = "School starts in:"
+    document.getElementById("demo").innerHTML = hours + "h "
+  + minutes + "m " + seconds + "s ";
+  document.getElementById("tabName").innerHTML = hours + "h "
+  + minutes + "m " + seconds + "s ";
+  }else if(distance <= 6 && distance >= 0){
+    countDownDate = new Date((realtime.getMonth() + 1)+" "+realtime.getDate()+", "+realtime.getFullYear()+ " 15:30:00").getTime();
+    var now = new Date().getTime();
+  var distance = countDownDate - now;
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("demo").innerHTML = hours + "h "
+  + minutes + "m " + seconds + "s ";
+  document.getElementById("tabName").innerHTML = hours + "h "
+  + minutes + "m " + seconds + "s ";
+  document.getElementById("maintext").innerHTML = "School ends in:"
   }
 }, 1000);
 function randomize(){
